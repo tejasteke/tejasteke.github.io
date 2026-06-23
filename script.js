@@ -190,24 +190,46 @@ function initContactForm() {
     
     // Read input fields
     const name = document.getElementById('form-name').value.trim();
+    const company = document.getElementById('form-company').value.trim();
     const email = document.getElementById('form-email').value.trim();
+    const role = document.getElementById('form-role').value;
+    const message = document.getElementById('form-message').value.trim();
     
-    // Mock API request delay (1.2 seconds)
-    setTimeout(() => {
-      if (name && email) {
-        // Success response
-        feedback.className = 'form-feedback success';
-        feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your message was sent successfully. Tejas will contact you shortly.`;
-        feedback.style.display = 'block';
-        
-        // Reset the form
-        form.reset();
-      } else {
-        feedback.className = 'form-feedback error';
-        feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error sending message. Please check the fields and try again.';
-        feedback.style.display = 'block';
-      }
+    // Google Form endpoint and Field Entry IDs mapping
+    const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSetpYUXG6sMvpvvCfZLo8HSx-9w85KZ03ls86l0WCyn1YxKJw/formResponse';
+    
+    const formData = new URLSearchParams();
+    formData.append('entry.2107981272', name);         // Name (Required)
+    formData.append('entry.1587445071', company);      // Company Name ? (Required)
+    formData.append('entry.1771514759', email);        // Email ? (Required)
+    formData.append('entry.1662415434', role);         // Job Opportunity / Role ? (Required)
+    formData.append('entry.1822200156', message);       // Message ? (Optional)
+
+    // Submit via fetch with no-cors mode
+    fetch(googleFormActionUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData.toString()
+    })
+    .then(() => {
+      // In no-cors mode, we can't inspect response contents, but successful connection triggers .then
+      feedback.className = 'form-feedback success';
+      feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> Thank you, <strong>${name}</strong>! Your message was submitted successfully to Tejas's workspace.`;
+      feedback.style.display = 'block';
       
+      // Reset the form
+      form.reset();
+    })
+    .catch((error) => {
+      console.error('Google Form Submission Error:', error);
+      feedback.className = 'form-feedback error';
+      feedback.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error sending message. Please try again.';
+      feedback.style.display = 'block';
+    })
+    .finally(() => {
       // Restore button state
       submitBtn.innerHTML = originalBtnHTML;
       submitBtn.disabled = false;
@@ -216,7 +238,6 @@ function initContactForm() {
       setTimeout(() => {
         feedback.style.display = 'none';
       }, 6000);
-      
-    }, 1200);
+    });
   });
 }
