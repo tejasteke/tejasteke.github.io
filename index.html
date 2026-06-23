@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tejas Teke | Data Analyst & ML Engineer Portfolio</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Tejas Teke, Data Analyst, Power BI Developer, and Machine Learning Enthusiast. Check out interactive projects, dashboards, and ML models.">
+  <meta name="keywords" content="Tejas Teke, Data Analyst, Power BI Developer, Machine Learning, Python, SQL, Dashboard, Portfolio">
+  <meta name="author" content="Tejas Teke">
+  
+  <!-- Favicon (Fallback emoji) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- --- HEADER / NAVIGATION --- -->
+  <header id="header">
+    <div class="container navbar">
+      <a href="#hero" class="logo" id="nav-logo">
+        <span>&lt;</span>TejasTeke<span>/&gt;</span>
+      </a>
+      
+      <nav class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link-item active">About</a>
+        <a href="#skills" class="nav-link-item">Skills</a>
+        <a href="#projects" class="nav-link-item">Projects</a>
+        <a href="#certifications" class="nav-link-item">Certifications</a>
+        <a href="#contact" class="nav-link-item">Contact</a>
+      </nav>
+
+      <div class="controls-group">
+        <button class="theme-toggle" id="theme-btn" aria-label="Toggle light/dark theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- --- HERO SECTION --- -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+      <div class="hero-content fade-in">
+        <div class="hero-badge">
+          <i class="fa-solid fa-chart-line"></i> Open for Data Analyst & BI Developer roles
+        </div>
+        <h1 class="hero-title">Tejas Teke</h1>
+        <h2 class="hero-subtitle">Data Analyst & Power BI Developer</h2>
+        <p class="hero-text">
+          I'm Tejas Teke — an MCA student building interactive dashboards, ML models, and automated reporting pipelines with Python, SQL and Power BI.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary" id="btn-hero-contact">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#projects" class="btn btn-secondary" id="btn-hero-work">View Projects</a>
+        </div>
+        <div class="hero-socials">
+          <span style="font-size: 0.9rem; color: var(--text-muted); margin-right: 10px;">CONNECT:</span>
+          <a href="https://linkedin.com/in/tejas-teke-24aa54292" target="_blank" rel="noopener noreferrer" class="social-link" id="hero-linkedin" aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/tejasteke" target="_blank" rel="noopener noreferrer" class="social-link" id="hero-github" aria-label="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="mailto:tejasteke2001@gmail.com" class="social-link" id="hero-email" aria-label="Email Address">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual fade-in">
+        <div class="visual-sphere"></div>
+        <!-- Floating Interactive Stat Card -->
+        <div class="glass-card interactive-mock-card" id="hero-interactive-card">
+          <div class="card-header-bar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="mock-stat">
+            <div class="mock-stat-label">Model Accuracy achieved</div>
+            <div class="mock-stat-value gradient-text" id="mock-stat-pct">88.0%</div>
+          </div>
+          <div class="mock-stat">
+            <div class="mock-stat-label">Manual Effort Reduced</div>
+            <div class="mock-stat-value" style="color: var(--accent-primary);" id="mock-stat-eff">~40%</div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-bar" style="height: 30%;"></div>
+            <div class="mock-bar" style="height: 55%;"></div>
+            <div class="mock-bar" style="height: 45%;"></div>
+            <div class="mock-bar" style="height: 80%;"></div>
+            <div class="mock-bar" style="height: 60%;"></div>
+            <div class="mock-bar" style="height: 95%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- ABOUT & EDUCATION SECTION --- -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-summary fade-in">
+          <h2 class="section-title">Professional Summary</h2>
+          <p class="section-subtitle" style="margin-bottom: 20px;">Turning data pipelines into decisions</p>
+          <p>
+            I am a results-driven Master of Computer Applications (MCA) student with a passion for uncovering stories hidden within complex datasets. My technical background in computer applications combined with hands-on practice in data manipulation makes me highly capable in both analytics and development workflows.
+          </p>
+          <p>
+            My experience spans across designing data models in SQL, writing ETL scripts in Python using Pandas, and building business intelligence dashboards in Power BI. Additionally, I enjoy training supervised machine learning algorithms to predict trends and automate manual workflows.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-num">5+</div>
+              <div class="highlight-label">BI Dashboards Deployed</div>
+            </div>
+            <div class="highlight-item">
+              <div class="highlight-num">80+</div>
+              <div class="highlight-label">LeetCode Solved</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="education-timeline fade-in">
+          <h2 class="section-title">Education</h2>
+          <p class="section-subtitle" style="margin-bottom: 20px;">Academic background & coursework</p>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2024 - 2026</div>
+              <h3 class="timeline-title">Master of Computer Applications (MCA)</h3>
+              <div class="timeline-subtitle">IMSCDR, Ahmednagar</div>
+              <ul class="timeline-desc">
+                <li>Focus areas: Data Mining, Machine Learning, Database Management Systems, Statistics for Data Science.</li>
+                <li>Actively building end-to-end data analysis and model deployment pipelines for academic projects.</li>
+              </ul>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2021 - 2024</div>
+              <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+              <div class="timeline-subtitle">Ahmednagar College, Ahmednagar</div>
+              <ul class="timeline-desc">
+                <li>Graduated with distinction.</li>
+                <li>Built a strong foundation in algorithms, data structures, object-oriented programming (OOP), and databases.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- SKILLS SECTION --- -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-subtitle">My analytics toolbox and programming languages</p>
+      
+      <div class="skills-grid">
+        <!-- Programming -->
+        <div class="glass-card skill-card-wrap fade-in">
+          <h3 class="skill-category-title">
+            <i class="fa-solid fa-code"></i> Languages & Core
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Python (Pandas, NumPy, Scikit-learn)</span><span>85%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>SQL / PostgreSQL</span><span>80%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>HTML5 & CSS3</span><span>75%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="75"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visualization -->
+        <div class="glass-card skill-card-wrap fade-in">
+          <h3 class="skill-category-title">
+            <i class="fa-solid fa-chart-pie"></i> Visualisation & BI
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Power BI (DAX, Power Query)</span><span>85%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="85"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Data Modeling (Star Schema)</span><span>80%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>MS Excel (Pivot, Formulas)</span><span>70%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="70"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="glass-card skill-card-wrap fade-in">
+          <h3 class="skill-category-title">
+            <i class="fa-solid fa-brain"></i> Machine Learning
+          </h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Supervised/Unsupervised Learning</span><span>75%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Feature Engineering & Scaling</span><span>80%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Model Evaluation (RMSE, F1, Recall)</span><span>75%</span></div>
+              <div class="skill-bar-bg"><div class="skill-bar-fill" data-pct="75"></div></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Algorithmic Challenges -->
+        <div class="glass-card challenge-card fade-in">
+          <div class="challenge-info">
+            <h3>Algorithmic Problem Solving</h3>
+            <p>I actively practice coding and data structures to sharpen my analytical reasoning and problem-solving skills.</p>
+            <div class="badge-tags">
+              <span class="badge-tag"><i class="fa-solid fa-circle-check"></i> 80+ Challenges Solved</span>
+              <span class="badge-tag">LeetCode</span>
+              <span class="badge-tag">HackerRank</span>
+              <span class="badge-tag">Arrays</span>
+              <span class="badge-tag">Dynamic Programming</span>
+              <span class="badge-tag">OOP</span>
+            </div>
+          </div>
+          <div class="challenge-progress">
+            <svg class="progress-circle" width="100" height="100">
+              <circle class="progress-circle-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="progress-circle-val" id="leetcode-circle" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="progress-text">
+              80+
+              <span>solved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- --- PROJECTS SECTION --- -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Academic works and independent developments</p>
+      
+      <div class="projects-grid">
+        <!-- Power BI Dashboard -->
+        <div class="glass-card project-card fade-in" id="project-pbi-sales">
+          <div class="project-image-placeholder">
+            <i class="fa-solid fa-chart-line project-visual-icon"></i>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Power BI</span>
+            <span class="project-tag">DAX</span>
+            <span class="project-tag">Power Query</span>
+            <span class="project-tag">Star Schema</span>
+          </div>
+          <h3 class="project-title">Power BI Sales & Inventory Dashboard</h3>
+          <ul class="project-desc">
+            <li>Designed and deployed 5+ interactive dashboards tracking revenue, margins, and demand metrics across 10k+ rows of retail data.</li>
+            <li>Automated data refresh schedules, reducing monthly manual reporting overhead by ~40%.</li>
+            <li>Constructed a clean star schema layout (4 dimension tables + 1 fact table) that queries 100k+ rows in sub-3-seconds.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/tejasteke" target="_blank" rel="noopener noreferrer" class="project-link" id="link-pbi-github"><i class="fa-brands fa-github"></i> Repository</a>
+          </div>
+        </div>
+
+        <!-- Python ML Project -->
+        <div class="glass-card project-card fade-in" id="project-ml-churn">
+          <div class="project-image-placeholder">
+            <i class="fa-solid fa-brain project-visual-icon" style="color: var(--accent-secondary);"></i>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">EDA</span>
+          </div>
+          <h3 class="project-title">Python Data Analysis & ML Models</h3>
+          <ul class="project-desc">
+            <li>Cleaned and analysed structured transactional records (5k to 50k rows) extracting critical factors for customer retention.</li>
+            <li>Built predictive classification pipelines (e.g. churn forecasting) using feature scaling, achieving 88% model accuracy.</li>
+            <li>Automated ETL and reporting processes, accelerating model analysis times by roughly 30%.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/tejasteke" target="_blank" rel="noopener noreferrer" class="project-link" id="link-ml-github"><i class="fa-brands fa-github"></i> Repository</a>
+          </div>
+        </div>
+
+        <!-- Front-End Project -->
+        <div class="glass-card project-card fade-in" id="project-frontend">
+          <div class="project-image-placeholder">
+            <i class="fa-solid fa-code project-visual-icon" style="color: var(--accent-success);"></i>
+          </div>
+          <div class="project-tags">
+            <span class="project-tag">HTML5</span>
+            <span class="project-tag">CSS3</span>
+            <span class="project-tag">Responsive Design</span>
+          </div>
+          <h3 class="project-title">E-Commerce Clone Front-End</h3>
+          <ul class="project-desc">
+            <li>Developed a pixel-perfect, responsive Amazon-style UI mockup compatible across devices from 320px to 1440px widths.</li>
+            <li>Configured 6 clean grid-based product grids with strict alignment and spacing hierarchy.</li>
+            <li>Wrote semantic, accessible HTML templates utilizing clean, modular style guidelines.</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/tejasteke" target="_blank" rel="noopener noreferrer" class="project-link" id="link-fe-github"><i class="fa-brands fa-github"></i> Repository</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- CERTIFICATIONS & ACHIEVEMENTS --- -->
+  <section id="certifications" class="section showcase-section">
+    <div class="container">
+      <h2 class="section-title">Certifications & Achievements</h2>
+      <p class="section-subtitle">Credentials and competitive programming milestones</p>
+      
+      <div class="cert-grid">
+        <!-- Power BI Workshop -->
+        <div class="glass-card cert-card fade-in" id="cert-pbi">
+          <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+          <div class="cert-info">
+            <h3>Power BI Workshop</h3>
+            <p>Ahmednagar College (2024)</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Hands-on training in dimensional modeling, key KPI formulation, and custom DAX calculations.</p>
+          </div>
+        </div>
+
+        <!-- Python Programming -->
+        <div class="glass-card cert-card fade-in" id="cert-python">
+          <div class="cert-icon" style="color: var(--accent-secondary); background: rgba(99, 102, 241, 0.1);"><i class="fa-brands fa-python"></i></div>
+          <div class="cert-info">
+            <h3>Python Programming Certification</h3>
+            <p>Academic (2023)</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Credential covering OOP principles, file manipulation, scripting, and data structures.</p>
+          </div>
+        </div>
+
+        <!-- LeetCode/HackerRank -->
+        <div class="glass-card cert-card fade-in" id="cert-algo">
+          <div class="cert-icon" style="color: var(--accent-success); background: rgba(16, 185, 129, 0.1);"><i class="fa-solid fa-terminal"></i></div>
+          <div class="cert-info">
+            <h3>80+ Algorithmic Challenges</h3>
+            <p>LeetCode & HackerRank</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Completed challenges covering Array manipuation, Dynamic programming, and Tree structures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- CONTACT SECTION --- -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Have a dataset, a dashboard, or a hiring decision in mind? Let's talk.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info-list fade-in">
+          <!-- Location -->
+          <div class="contact-info-item" id="info-location">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-info-text">
+              <p>Location</p>
+              <span>Ahmednagar, MH, India</span>
+            </div>
+          </div>
+          
+          <!-- Email -->
+          <div class="contact-info-item" id="info-email">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-info-text">
+              <p>Email</p>
+              <a href="mailto:tejasteke2001@gmail.com">tejasteke2001@gmail.com</a>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="contact-info-item" id="info-phone">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-info-text">
+              <p>Phone</p>
+              <a href="tel:+918625014941">+91 86250 14941</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="glass-card fade-in" id="contact-form-card">
+          <form class="contact-form" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="form-name" class="contact-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" id="form-email" class="contact-input" placeholder="Your Email Address" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" id="form-subject" class="contact-input" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea id="form-message" class="contact-input" placeholder="Your Message Here" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="btn-submit-form" style="width: max-content;">
+              Send Message <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <div class="form-feedback" id="form-msg-feedback"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo" id="footer-logo-text">
+        <span>&lt;</span>TejasTeke<span>/&gt;</span>
+      </div>
+      <div class="footer-socials">
+        <a href="https://linkedin.com/in/tejas-teke-24aa54292" target="_blank" rel="noopener noreferrer" class="social-link" id="footer-linkedin" aria-label="LinkedIn Profile">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/tejasteke" target="_blank" rel="noopener noreferrer" class="social-link" id="footer-github" aria-label="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2026 Tejas Teke. Developed with HTML, CSS, and JS. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Loader -->
+  <script src="script.js"></script>
+</body>
+</html>

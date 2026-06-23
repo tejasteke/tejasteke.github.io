@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" fill="none">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="grad-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#4f46e5" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grid-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.08"/>
+      <stop offset="50%" stop-color="#6366f1" stop-opacity="0.03"/>
+      <stop offset="100%" stop-color="#0a0f1d" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Base Grid Background -->
+  <rect width="800" height="1000" fill="url(#grid)" />
+  <rect width="800" height="1000" fill="url(#grid-grad)" />
+
+  <!-- Ambient Glows -->
+  <circle cx="600" cy="300" r="300" fill="url(#glow)" />
+  <circle cx="300" cy="700" r="250" fill="url(#glow)" opacity="0.6" />
+
+  <!-- Network / Connection Nodes -->
+  <g stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.2" fill="none">
+    <!-- Lines -->
+    <path d="M 500 150 L 650 100 L 720 220 Z" />
+    <path d="M 650 100 L 580 280 L 500 150" />
+    <path d="M 580 280 L 720 220 L 680 400 Z" />
+    <path d="M 580 280 L 480 380 L 380 300 Z" />
+    <path d="M 480 380 L 560 520 L 680 400" />
+    <path d="M 380 300 L 290 420 L 480 380" />
+    <path d="M 290 420 L 350 580 L 480 380" />
+    <path d="M 350 580 L 560 520 L 510 680 Z" />
+  </g>
+
+  <!-- Node Dots -->
+  <g fill="#06b6d4" opacity="0.7">
+    <circle cx="500" cy="150" r="5" />
+    <circle cx="650" cy="100" r="6" />
+    <circle cx="720" cy="220" r="4" fill="#6366f1" />
+    <circle cx="580" cy="280" r="7" />
+    <circle cx="680" cy="400" r="5" />
+    <circle cx="480" cy="380" r="8" fill="#6366f1" />
+    <circle cx="380" cy="300" r="4" />
+    <circle cx="290" cy="420" r="6" />
+    <circle cx="560" cy="520" r="5" />
+    <circle cx="350" cy="580" r="6" fill="#6366f1" />
+    <circle cx="510" cy="680" r="7" />
+  </g>
+
+  <!-- Glowing rings around key nodes -->
+  <circle cx="480" cy="380" r="16" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+  <circle cx="580" cy="280" r="14" stroke="#06b6d4" stroke-width="1.5" stroke-opacity="0.4" fill="none" />
+
+  <!-- Visualized Data Elements (Bar charts / Line charts floating) -->
+  <!-- Line Chart Representation -->
+  <path d="M 200 800 L 280 750 L 360 780 L 440 680 L 520 720 L 600 600 L 680 640 L 760 520" 
+        stroke="url(#grad-cyan)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4" />
+  
+  <path d="M 200 800 L 280 750 L 360 780 L 440 680 L 520 720 L 600 600 L 680 640 L 760 520 L 760 900 L 200 900 Z" 
+        fill="url(#grad-cyan)" opacity="0.05" />
+
+  <!-- Another Line Chart -->
+  <path d="M 250 850 L 330 810 L 410 830 L 490 730 L 570 790 L 650 670 L 730 710" 
+        stroke="url(#grad-indigo)" stroke-width="2" stroke-dasharray="4 4" fill="none" opacity="0.3" />
+
+  <!-- Small Bars (Histogram representation) -->
+  <g fill="#06b6d4" opacity="0.15">
+    <rect x="50" y="300" width="12" height="60" rx="3" />
+    <rect x="70" y="280" width="12" height="80" rx="3" fill="#6366f1" />
+    <rect x="90" y="250" width="12" height="110" rx="3" />
+    <rect x="110" y="290" width="12" height="70" rx="3" />
+    <rect x="130" y="220" width="12" height="140" rx="3" fill="#6366f1" />
+    <rect x="150" y="260" width="12" height="100" rx="3" />
+  </g>
+
+  <!-- Binary Data Bits floating around -->
+  <g fill="currentColor" fill-opacity="0.05" font-family="monospace" font-size="12" font-weight="bold">
+    <text x="680" y="70">01</text>
+    <text x="450" y="200">101</text>
+    <text x="590" y="470">00</text>
+    <text x="320" y="500">1101</text>
+    <text x="410" y="640">10</text>
+    <text x="670" y="550">011</text>
+    <text x="240" y="360">01</text>
+  </g>
+</svg>
