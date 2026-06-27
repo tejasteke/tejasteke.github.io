@@ -24,11 +24,11 @@
   --radius-full: 9999px;
 
   /* Theme: Dark Mode (Default) */
-  --bg-primary: #0a0f1d;
-  --bg-secondary: #0f172a;
-  --surface-primary: #151f38;
-  --surface-secondary: #1e293b;
-  --border-color: rgba(255, 255, 255, 0.06);
+  --bg-primary: #030712;      /* Deeper black-slate */
+  --bg-secondary: #0b0f19;    /* Deeper navy-slate */
+  --surface-primary: rgba(17, 24, 39, 0.65); /* Rich translucent glass */
+  --surface-secondary: rgba(31, 41, 55, 0.7);
+  --border-color: rgba(255, 255, 255, 0.08);
   --border-focus: rgba(6, 182, 212, 0.5);
 
   --text-primary: #f8fafc;
@@ -44,8 +44,8 @@
 
   --gradient-brand: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
   --gradient-text: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
-  --gradient-card: linear-gradient(135deg, rgba(21, 31, 56, 0.7) 0%, rgba(15, 23, 42, 0.7) 100%);
-  --glass-bg: rgba(15, 23, 42, 0.6);
+  --gradient-card: linear-gradient(135deg, rgba(21, 31, 56, 0.45) 0%, rgba(15, 23, 42, 0.45) 100%);
+  --glass-bg: rgba(11, 15, 25, 0.85);
   --glass-border: rgba(255, 255, 255, 0.08);
 }
 
@@ -53,7 +53,7 @@
 [data-theme="light"] {
   --bg-primary: #f8fafc;
   --bg-secondary: #f1f5f9;
-  --surface-primary: #ffffff;
+  --surface-primary: rgba(255, 255, 255, 0.85);
   --surface-secondary: #e2e8f0;
   --border-color: rgba(0, 0, 0, 0.06);
   --border-focus: rgba(8, 145, 178, 0.5);
@@ -71,8 +71,8 @@
 
   --gradient-brand: linear-gradient(135deg, #0891b2 0%, #4f46e5 100%);
   --gradient-text: linear-gradient(135deg, #0f172a 30%, #4f46e5 100%);
-  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.9) 100%);
-  --glass-bg: rgba(255, 255, 255, 0.7);
+  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(241, 245, 249, 0.8) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(0, 0, 0, 0.08);
   --shadow-primary: 0 8px 24px rgba(8, 145, 178, 0.15);
 }
@@ -238,19 +238,26 @@ ul {
 /* --- NAVIGATION HEADER --- */
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  border-radius: var(--radius-full);
   z-index: 100;
-  background: rgba(10, 15, 29, 0.1); /* fallback */
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+  background: rgba(10, 15, 29, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  transition: all var(--transition-normal);
 }
 
 header.scrolled {
+  top: 10px;
   background: var(--glass-bg);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(6, 182, 212, 0.25);
+  max-width: 1100px;
 }
 
 .navbar {
@@ -1140,4 +1147,445 @@ footer {
   .section {
     padding: 60px 0;
   }
+  .section {
+    padding: 60px 0;
+  }
 }
+
+/* ==========================================
+   GLOWING ORBS, FLOATING BADGES & PROJECT MOCKUPS
+   ========================================== */
+
+/* Glowing Orbs */
+.glowing-orb {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.15;
+  mix-blend-mode: screen;
+}
+.orb-1 {
+  top: 10%;
+  left: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-primary) 0%, transparent 70%);
+  animation: float-orb 15s infinite alternate ease-in-out;
+}
+.orb-2 {
+  top: 45%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 70%);
+  animation: float-orb 20s infinite alternate-reverse ease-in-out;
+}
+.orb-3 {
+  bottom: 10%;
+  left: 10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--accent-success) 0%, transparent 70%);
+  animation: float-orb 18s infinite alternate ease-in-out;
+}
+
+@keyframes float-orb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -40px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* Floating Tech Badges in Hero */
+.floating-badge {
+  position: absolute;
+  z-index: 5;
+  background: var(--surface-primary);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+.fb-1 {
+  top: 15%;
+  left: -5%;
+  animation: float-badge 6s infinite alternate ease-in-out;
+}
+.fb-2 {
+  bottom: 20%;
+  right: -5%;
+  animation: float-badge 7s infinite alternate-reverse ease-in-out;
+}
+.fb-3 {
+  bottom: 60%;
+  left: -10%;
+  animation: float-badge 5s infinite alternate ease-in-out;
+}
+
+@keyframes float-badge {
+  0% { transform: translateY(0) rotate(0); }
+  100% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* Project Visual Mockups Styles */
+.project-image-placeholder {
+  height: 200px;
+  background: var(--surface-primary);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.project-card:hover .project-image-placeholder {
+  border-color: rgba(6, 182, 212, 0.3);
+  background: var(--surface-secondary);
+}
+
+/* Power BI Mockup Styling */
+.mock-pbi-dashboard {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-body);
+}
+
+.mock-pbi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.mock-pbi-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.mock-pbi-filters {
+  display: flex;
+  gap: 4px;
+}
+
+.mock-pbi-filter-pill {
+  font-size: 0.6rem;
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--accent-primary);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.mock-pbi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.mock-pbi-kpi {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mock-pbi-kpi-label {
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.mock-pbi-kpi-val {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.mock-pbi-kpi-trend {
+  font-size: 0.5rem;
+  color: var(--accent-success);
+}
+
+.mock-pbi-charts {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 8px;
+  height: 70px;
+}
+
+.mock-pbi-bar-chart {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.mock-pbi-bar {
+  flex: 1;
+  background: var(--gradient-brand);
+  border-radius: 2px 2px 0 0;
+  height: 20%;
+  transition: height 0.6s ease;
+}
+
+.mock-pbi-bar:nth-child(1) { height: 35%; }
+.mock-pbi-bar:nth-child(2) { height: 60%; }
+.mock-pbi-bar:nth-child(3) { height: 45%; }
+.mock-pbi-bar:nth-child(4) { height: 80%; }
+.mock-pbi-bar:nth-child(5) { height: 50%; }
+
+.project-card:hover .mock-pbi-bar:nth-child(1) { height: 45%; }
+.project-card:hover .mock-pbi-bar:nth-child(2) { height: 75%; }
+.project-card:hover .mock-pbi-bar:nth-child(3) { height: 60%; }
+.project-card:hover .mock-pbi-bar:nth-child(4) { height: 95%; }
+.project-card:hover .mock-pbi-bar:nth-child(5) { height: 80%; }
+
+.mock-pbi-donut-chart {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.mock-donut-ring {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: conic-gradient(var(--accent-primary) 0% 70%, var(--accent-secondary) 70% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.8s ease;
+}
+
+.mock-donut-center {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: #111827;
+}
+[data-theme="light"] .mock-donut-center {
+  background: #fff;
+}
+
+.project-card:hover .mock-donut-ring {
+  transform: rotate(45deg);
+}
+
+/* Python ML Mockup Styling */
+.mock-ide-window {
+  width: 100%;
+  height: 100%;
+  background: #0d1117;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mock-ide-header {
+  height: 28px;
+  background: #161b22;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mock-ide-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.mock-ide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+}
+
+.mock-ide-dot:nth-child(1) { background: #ff5f56; }
+.mock-ide-dot:nth-child(2) { background: #ffbd2e; }
+.mock-ide-dot:nth-child(3) { background: #27c93f; }
+
+.mock-ide-title {
+  font-size: 0.65rem;
+  color: #8b949e;
+}
+
+.mock-ide-body {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.65rem;
+  color: #c9d1d9;
+  text-align: left;
+}
+
+.mock-code-line {
+  display: flex;
+  gap: 6px;
+}
+
+.mock-code-num {
+  color: #484f58;
+  width: 15px;
+  text-align: right;
+  user-select: none;
+}
+
+.mock-code-text {
+  color: #ff7b72;
+}
+.mock-code-text .keyword { color: #ff7b72; }
+.mock-code-text .func { color: #d2a8ff; }
+.mock-code-text .string { color: #a5d6ff; }
+.mock-code-text .comment { color: #8b949e; }
+
+.mock-terminal-line {
+  margin-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 4px;
+  color: #3fb950;
+}
+
+.mock-terminal-line .accent {
+  color: #58a6ff;
+}
+
+/* Front-End Shop Mockup Styling */
+.mock-shop-window {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--surface-primary);
+}
+
+.mock-shop-nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.mock-shop-search {
+  flex: 1;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.mock-shop-cart {
+  font-size: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.mock-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.mock-shop-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.mock-shop-img {
+  height: 40px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock-shop-img i {
+  font-size: 1rem;
+  color: var(--accent-primary);
+  opacity: 0.6;
+}
+
+.mock-shop-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+
+.mock-shop-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mock-shop-price {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent-success);
+}
+
+.mock-shop-rating {
+  font-size: 0.5rem;
+  color: var(--accent-warning);
+}
+
+.mock-shop-btn {
+  font-size: 0.5rem;
+  font-weight: 700;
+  background: var(--gradient-brand);
+  color: #fff;
+  padding: 2px 0;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.project-card:hover .mock-shop-item {
+  transform: translateY(-2px);
+  border-color: rgba(6, 182, 212, 0.25);
+}
+

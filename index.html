@@ -20,6 +20,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <!-- Glowing Background Orbs -->
+  <div class="glowing-orb orb-1"></div>
+  <div class="glowing-orb orb-2"></div>
+  <div class="glowing-orb orb-3"></div>
 
   <!-- --- HEADER / NAVIGATION --- -->
   <header id="header">
@@ -104,6 +108,10 @@
             <div class="mock-bar" style="height: 95%;"></div>
           </div>
         </div>
+        <!-- Floating Badges -->
+        <div class="floating-badge fb-1"><i class="fa-brands fa-python"></i> Python</div>
+        <div class="floating-badge fb-2"><i class="fa-solid fa-database"></i> SQL</div>
+        <div class="floating-badge fb-3"><i class="fa-solid fa-chart-simple"></i> Power BI</div>
       </div>
     </div>
   </section>
@@ -276,7 +284,46 @@
         <!-- Power BI Dashboard -->
         <div class="glass-card project-card fade-in" id="project-pbi-sales">
           <div class="project-image-placeholder">
-            <i class="fa-solid fa-chart-line project-visual-icon"></i>
+            <div class="mock-pbi-dashboard">
+              <div class="mock-pbi-header">
+                <span class="mock-pbi-title"><i class="fa-solid fa-chart-pie"></i> Sales & Inventory Analytics</span>
+                <div class="mock-pbi-filters">
+                  <span class="mock-pbi-filter-pill">Region: All</span>
+                  <span class="mock-pbi-filter-pill">2026</span>
+                </div>
+              </div>
+              <div class="mock-pbi-grid">
+                <div class="mock-pbi-kpi">
+                  <span class="mock-pbi-kpi-label">Revenue</span>
+                  <span class="mock-pbi-kpi-val">$124.5K</span>
+                  <span class="mock-pbi-kpi-trend"><i class="fa-solid fa-caret-up"></i> +12.4%</span>
+                </div>
+                <div class="mock-pbi-kpi">
+                  <span class="mock-pbi-kpi-label">Transactions</span>
+                  <span class="mock-pbi-kpi-val">10.2K</span>
+                  <span class="mock-pbi-kpi-trend"><i class="fa-solid fa-caret-up"></i> +8.1%</span>
+                </div>
+                <div class="mock-pbi-kpi">
+                  <span class="mock-pbi-kpi-label">Margin %</span>
+                  <span class="mock-pbi-kpi-val">38.2%</span>
+                  <span class="mock-pbi-kpi-trend" style="color: var(--accent-primary);"><i class="fa-solid fa-caret-up"></i> +0.5%</span>
+                </div>
+              </div>
+              <div class="mock-pbi-charts">
+                <div class="mock-pbi-bar-chart">
+                  <div class="mock-pbi-bar"></div>
+                  <div class="mock-pbi-bar"></div>
+                  <div class="mock-pbi-bar"></div>
+                  <div class="mock-pbi-bar"></div>
+                  <div class="mock-pbi-bar"></div>
+                </div>
+                <div class="mock-pbi-donut-chart">
+                  <div class="mock-donut-ring">
+                    <div class="mock-donut-center"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="project-tags">
             <span class="project-tag">Power BI</span>
@@ -297,8 +344,45 @@
 
         <!-- Python ML Project -->
         <div class="glass-card project-card fade-in" id="project-ml-churn">
-          <div class="project-image-placeholder">
-            <i class="fa-solid fa-brain project-visual-icon" style="color: var(--accent-secondary);"></i>
+          <div class="project-image-placeholder" style="padding: 0;">
+            <div class="mock-ide-window">
+              <div class="mock-ide-header">
+                <div class="mock-ide-dots">
+                  <span class="mock-ide-dot"></span>
+                  <span class="mock-ide-dot"></span>
+                  <span class="mock-ide-dot"></span>
+                </div>
+                <span class="mock-ide-title">churn_forecast.py</span>
+                <span></span>
+              </div>
+              <div class="mock-ide-body">
+                <div class="mock-code-line">
+                  <span class="mock-code-num">1</span>
+                  <span class="mock-code-text"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span>
+                </div>
+                <div class="mock-code-line">
+                  <span class="mock-code-num">2</span>
+                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> <span class="func">train_test_split</span></span>
+                </div>
+                <div class="mock-code-line">
+                  <span class="mock-code-num">3</span>
+                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> <span class="func">StandardScaler</span></span>
+                </div>
+                <div class="mock-code-line">
+                  <span class="mock-code-num">4</span>
+                  <span class="mock-code-text"><span class="comment"># Load data & run training pipeline...</span></span>
+                </div>
+                <div class="mock-code-line">
+                  <span class="mock-code-num">5</span>
+                  <span class="mock-code-text">model = <span class="func">RandomForestClassifier</span>(n_estimators=100)</span>
+                </div>
+                <div class="mock-terminal-line">
+                  <span>$ python train.py</span><br>
+                  <span>[INFO] Scaling features... Done.</span><br>
+                  <span>[SUCCESS] Accuracy: <span class="accent">88.0%</span> | F1-Score: <span class="accent">86.2%</span></span>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="project-tags">
             <span class="project-tag">Python</span>
@@ -319,8 +403,38 @@
 
         <!-- Front-End Project -->
         <div class="glass-card project-card fade-in" id="project-frontend">
-          <div class="project-image-placeholder">
-            <i class="fa-solid fa-code project-visual-icon" style="color: var(--accent-success);"></i>
+          <div class="project-image-placeholder" style="padding: 0;">
+            <div class="mock-shop-window">
+              <div class="mock-shop-nav">
+                <i class="fa-solid fa-bars" style="font-size: 0.7rem; color: var(--text-muted);"></i>
+                <div class="mock-shop-search"></div>
+                <i class="fa-solid fa-cart-shopping mock-shop-cart"></i>
+              </div>
+              <div class="mock-shop-grid">
+                <div class="mock-shop-item">
+                  <div class="mock-shop-img">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+                  <span class="mock-shop-title">Smart Phone v5</span>
+                  <div class="mock-shop-meta">
+                    <span class="mock-shop-price">$599</span>
+                    <span class="mock-shop-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                  </div>
+                  <div class="mock-shop-btn">Add to Cart</div>
+                </div>
+                <div class="mock-shop-item">
+                  <div class="mock-shop-img">
+                    <i class="fa-solid fa-headphones"></i>
+                  </div>
+                  <span class="mock-shop-title">Pro Wireless Headset</span>
+                  <div class="mock-shop-meta">
+                    <span class="mock-shop-price">$149</span>
+                    <span class="mock-shop-rating"><i class="fa-solid fa-star"></i> 4.5</span>
+                  </div>
+                  <div class="mock-shop-btn">Add to Cart</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="project-tags">
             <span class="project-tag">HTML5</span>
