@@ -57,12 +57,12 @@
     <div class="container hero-grid">
       <div class="hero-content fade-in">
         <div class="hero-badge">
-          <i class="fa-solid fa-chart-line"></i> Open for Data Analyst & BI Developer roles
+          <i class="fa-solid fa-bolt" style="color: var(--accent-primary);"></i> Open for Data Analyst & BI Developer roles
         </div>
         <h1 class="hero-title">Tejas Teke</h1>
-        <h2 class="hero-subtitle">Data Analyst & Power BI Developer</h2>
+        <h2 class="hero-subtitle">Analytics Engineer & BI Developer</h2>
         <p class="hero-text">
-          I'm Tejas Teke — an MCA student building interactive dashboards, ML models, and automated reporting pipelines with Python, SQL and Power BI.
+          I'm Tejas — an MCA student obsessed with turning chaotic data into clean pipelines and stunning dashboards. Shipping ML models, ETL pipelines, and BI insights with Python, SQL, and Power BI.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary" id="btn-hero-contact">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
@@ -84,56 +84,40 @@
       
       <div class="hero-visual fade-in">
         <div class="visual-sphere"></div>
-        <!-- Floating Interactive Stat Card -->
-        <div class="glass-card interactive-mock-card" id="hero-interactive-card">
-          <div class="card-header-bar">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-label">Model Accuracy achieved</div>
-            <div class="mock-stat-value gradient-text" id="mock-stat-pct">88.0%</div>
-          </div>
-          <div class="mock-stat">
-            <div class="mock-stat-label">Manual Effort Reduced</div>
-            <div class="mock-stat-value" style="color: var(--accent-primary);" id="mock-stat-eff">~40%</div>
-          </div>
-          <div class="mock-chart">
-            <div class="mock-bar" style="height: 30%;"></div>
-            <div class="mock-bar" style="height: 55%;"></div>
-            <div class="mock-bar" style="height: 45%;"></div>
-            <div class="mock-bar" style="height: 80%;"></div>
-            <div class="mock-bar" style="height: 60%;"></div>
-            <div class="mock-bar" style="height: 95%;"></div>
-          </div>
+        <!-- Profile Image Container -->
+        <div class="hero-profile-card">
+          <img src="profile.jpg" alt="Tejas Teke" class="hero-profile-img">
         </div>
-        <!-- Floating Badges -->
-        <div class="floating-badge fb-1"><i class="fa-brands fa-python"></i> Python</div>
-        <div class="floating-badge fb-2"><i class="fa-solid fa-database"></i> SQL</div>
-        <div class="floating-badge fb-3"><i class="fa-solid fa-chart-simple"></i> Power BI</div>
+      </div>
+      <!-- Scroll down indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
       </div>
     </div>
   </section>
 
   <!-- --- ABOUT & EDUCATION SECTION --- -->
   <section id="about" class="section">
+    <div class="section-bg-text" style="top: 2%; right: -2%;">ABOUT</div>
     <div class="container">
       <div class="about-grid">
         <div class="about-summary fade-in">
           <h2 class="section-title">Professional Summary</h2>
-          <p class="section-subtitle" style="margin-bottom: 20px;">Turning data pipelines into decisions</p>
+          <p class="section-subtitle" style="margin-bottom: 20px;">Decoding chaotic data, one pipeline at a time.</p>
           <p>
-            I am a results-driven Master of Computer Applications (MCA) student with a passion for uncovering stories hidden within complex datasets. My technical background in computer applications combined with hands-on practice in data manipulation makes me highly capable in both analytics and development workflows.
+            I am a tech-driven Master of Computer Applications (MCA) student focused on building high-performance data systems. I bridge the gap between complex database backends and clean executive dashboards, transforming messy raw metrics into automated, visual business intelligence.
           </p>
           <p>
-            My experience spans across designing data models in SQL, writing ETL scripts in Python using Pandas, and building business intelligence dashboards in Power BI. Additionally, I enjoy training supervised machine learning algorithms to predict trends and automate manual workflows.
+            My toolset centers on writing optimized SQL queries, orchestrating python ETL pipelines (Pandas/NumPy), and designing interactive dashboards in Power BI. I also enjoy training predictive machine learning models to forecast trends and eliminate manual reporting bottlenecks.
           </p>
-          <!-- <div class="about-highlights">
-            <div class="highlight-item"> -->
-              <!-- <div class="highlight-num"></div>
-              <div class="highlight-label">BI Dashboards Deployed</div> -->
-            <!-- </div> -->
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <div class="highlight-num">88%</div>
+              <div class="highlight-label">Model Accuracy</div>
+            </div>
             <div class="highlight-item">
               <div class="highlight-num">80+</div>
               <div class="highlight-label">LeetCode Solved</div>
@@ -175,6 +159,7 @@
 
   <!-- --- SKILLS SECTION --- -->
   <section id="skills" class="section">
+    <div class="section-bg-text" style="top: 2%; left: -2%;">SKILLS</div>
     <div class="container">
       <h2 class="section-title">Technical Skills</h2>
       <p class="section-subtitle">My analytics toolbox and programming languages</p>
@@ -276,6 +261,7 @@
 
   <!-- --- PROJECTS SECTION --- -->
   <section id="projects" class="section">
+    <div class="section-bg-text" style="top: 2%; right: -2%;">WORK</div>
     <div class="container">
       <h2 class="section-title">Featured Projects</h2>
       <p class="section-subtitle">Academic works and independent developments</p>
@@ -352,7 +338,7 @@
                   <span class="mock-ide-dot"></span>
                   <span class="mock-ide-dot"></span>
                 </div>
-                <span class="mock-ide-title">churn_forecast.py</span>
+                <span class="mock-ide-title">train_retail.py</span>
                 <span></span>
               </div>
               <div class="mock-ide-body">
@@ -362,39 +348,41 @@
                 </div>
                 <div class="mock-code-line">
                   <span class="mock-code-num">2</span>
-                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> <span class="func">train_test_split</span></span>
+                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> <span class="func">KMeans</span></span>
                 </div>
                 <div class="mock-code-line">
                   <span class="mock-code-num">3</span>
-                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> <span class="func">StandardScaler</span></span>
+                  <span class="mock-code-text"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> <span class="func">Ridge</span></span>
                 </div>
                 <div class="mock-code-line">
                   <span class="mock-code-num">4</span>
-                  <span class="mock-code-text"><span class="comment"># Load data & run training pipeline...</span></span>
+                  <span class="mock-code-text"><span class="comment"># Serializing models to data.js</span></span>
                 </div>
                 <div class="mock-code-line">
                   <span class="mock-code-num">5</span>
-                  <span class="mock-code-text">model = <span class="func">RandomForestClassifier</span>(n_estimators=100)</span>
+                  <span class="mock-code-text">export_weights(kmeans, ridge, <span class="string">"data.js"</span>)</span>
                 </div>
                 <div class="mock-terminal-line">
-                  <span>$ python train.py</span><br>
-                  <span>[INFO] Scaling features... Done.</span><br>
-                  <span>[SUCCESS] Accuracy: <span class="accent">88.0%</span> | F1-Score: <span class="accent">86.2%</span></span>
+                  <span>$ python train_retail.py</span><br>
+                  <span>[INFO] Loaded 1,000 transactions...</span><br>
+                  <span>[SUCCESS] Serialized K-Means & Ridge models!</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="project-tags">
             <span class="project-tag">Python</span>
-            <span class="project-tag">Pandas</span>
             <span class="project-tag">Scikit-learn</span>
-            <span class="project-tag">EDA</span>
+            <span class="project-tag">Vanilla JS</span>
+            <span class="project-tag">Data Science</span>
           </div>
-          <h3 class="project-title">Python Data Analysis & ML Models</h3>
+          <h3 class="project-title">Retail Sales Analytics & ML Dashboard</h3>
           <ul class="project-desc">
-            <li>Cleaned and analysed structured transactional records (5k to 50k rows) extracting critical factors for customer retention.</li>
-            <li>Built predictive classification pipelines (e.g. churn forecasting) using feature scaling, achieving 88% model accuracy.</li>
-            <li>Automated ETL and reporting processes, accelerating model analysis times by roughly 30%.</li>
+            <li><strong>Interactive ML Dashboard:</strong> Combines exploratory data analysis (EDA) with real-time, client-side machine learning.</li>
+            <li><strong>Data Pipeline:</strong> Cleaned 1,000 transactions and generated analytical charts using Python (Pandas & Seaborn).</li>
+            <li><strong>ML Models:</strong> Trained K-Means Clustering (4 customer profiles) and Ridge Regression models to predict purchase quantity and expected transaction spend.</li>
+            <li><strong>Serverless Architecture:</strong> Serialized weights into a static <code>data.js</code> file for serverless client-side predictions on GitHub Pages with zero CORS issues.</li>
+            <li><strong>Data Science Insight:</strong> Found near-zero correlation (-0.06) between customer age and spending, proving demographics alone are poor spend predictors.</li>
           </ul>
           <div class="project-links">
             <a href="https://tejasteke.github.io/retailml/" target="_blank" rel="noopener noreferrer" class="project-link" id="link-ml-github"><i class="fa-brands fa-github"></i> Repository</a>
@@ -457,6 +445,7 @@
 
   <!-- --- CERTIFICATIONS & ACHIEVEMENTS --- -->
   <section id="certifications" class="section showcase-section">
+    <div class="section-bg-text" style="top: 2%; left: -2%;">BADGES</div>
     <div class="container">
       <h2 class="section-title">Certifications & Achievements</h2>
       <p class="section-subtitle">Credentials and competitive programming milestones</p>
@@ -497,6 +486,7 @@
 
   <!-- --- CONTACT SECTION --- -->
   <section id="contact" class="section">
+    <div class="section-bg-text" style="top: 2%; right: -2%;">PING</div>
     <div class="container">
       <h2 class="section-title">Get In Touch</h2>
       <p class="section-subtitle">Have a dataset, a dashboard, or a hiring decision in mind? Let's talk.</p>

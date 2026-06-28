@@ -15,7 +15,7 @@
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.12);
-  --shadow-primary: 0 8px 24px rgba(6, 182, 212, 0.2);
+  --shadow-primary: 0 8px 24px rgba(139, 92, 246, 0.25);
 
   /* Border Radii */
   --radius-sm: 8px;
@@ -29,21 +29,21 @@
   --surface-primary: rgba(17, 24, 39, 0.65); /* Rich translucent glass */
   --surface-secondary: rgba(31, 41, 55, 0.7);
   --border-color: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(6, 182, 212, 0.5);
+  --border-focus: rgba(139, 92, 246, 0.5);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  --accent-primary: #06b6d4;      /* Cyan */
-  --accent-primary-hover: #0891b2;
-  --accent-secondary: #6366f1;    /* Indigo */
-  --accent-secondary-hover: #4f46e5;
+  --accent-primary: #8b5cf6;      /* Neon Violet */
+  --accent-primary-hover: #7c3aed;
+  --accent-secondary: #f43f5e;    /* Rose Pink */
+  --accent-secondary-hover: #e11d48;
   --accent-success: #10b981;      /* Emerald */
   --accent-warning: #f59e0b;      /* Amber */
 
-  --gradient-brand: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
-  --gradient-text: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
+  --gradient-brand: linear-gradient(135deg, #8b5cf6 0%, #f43f5e 100%);
+  --gradient-text: linear-gradient(135deg, #ffffff 20%, #f472b6 100%);
   --gradient-card: linear-gradient(135deg, rgba(21, 31, 56, 0.45) 0%, rgba(15, 23, 42, 0.45) 100%);
   --glass-bg: rgba(11, 15, 25, 0.85);
   --glass-border: rgba(255, 255, 255, 0.08);
@@ -56,25 +56,25 @@
   --surface-primary: rgba(255, 255, 255, 0.85);
   --surface-secondary: #e2e8f0;
   --border-color: rgba(0, 0, 0, 0.06);
-  --border-focus: rgba(8, 145, 178, 0.5);
+  --border-focus: rgba(124, 58, 237, 0.5);
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
 
-  --accent-primary: #0891b2;      /* Cyan Darker */
-  --accent-primary-hover: #0e7490;
-  --accent-secondary: #4f46e5;    /* Indigo Darker */
-  --accent-secondary-hover: #3730a3;
+  --accent-primary: #7c3aed;      /* Violet Darker */
+  --accent-primary-hover: #6d28d9;
+  --accent-secondary: #e11d48;    /* Rose Darker */
+  --accent-secondary-hover: #be123c;
   --accent-success: #059669;
   --accent-warning: #d97706;
 
-  --gradient-brand: linear-gradient(135deg, #0891b2 0%, #4f46e5 100%);
-  --gradient-text: linear-gradient(135deg, #0f172a 30%, #4f46e5 100%);
+  --gradient-brand: linear-gradient(135deg, #7c3aed 0%, #e11d48 100%);
+  --gradient-text: linear-gradient(135deg, #0f172a 30%, #7c3aed 100%);
   --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(241, 245, 249, 0.8) 100%);
   --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(0, 0, 0, 0.08);
-  --shadow-primary: 0 8px 24px rgba(8, 145, 178, 0.15);
+  --shadow-primary: 0 8px 24px rgba(124, 58, 237, 0.15);
 }
 
 /* --- RESET & BASE STYLES --- */
@@ -1586,6 +1586,176 @@ footer {
 
 .project-card:hover .mock-shop-item {
   transform: translateY(-2px);
-  border-color: rgba(6, 182, 212, 0.25);
+  border-color: rgba(139, 92, 246, 0.25);
 }
+
+/* ==========================================
+   GEN Z & FUTURISTIC REDESIGN ADDITIONS
+   ========================================== */
+
+/* Cyber Grid Backdrop */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(139, 92, 246, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 246, 0.015) 1px, transparent 1px);
+  pointer-events: none;
+}
+[data-theme="light"] body::before {
+  background-image: 
+    linear-gradient(to right, rgba(124, 58, 237, 0.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(124, 58, 237, 0.012) 1px, transparent 1px);
+}
+
+/* Outlined Background Huge Typography */
+.section-bg-text {
+  position: absolute;
+  font-size: clamp(6rem, 12vw, 11rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-heading);
+  letter-spacing: 2px;
+}
+[data-theme="light"] .section-bg-text {
+  -webkit-text-stroke: 1px rgba(15, 23, 42, 0.03);
+}
+
+/* Hover Glowing Card Accents */
+#project-pbi-sales:hover {
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+#project-ml-churn:hover {
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+#project-frontend:hover {
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* Button Glow Hover Effect */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+  border-color: var(--accent-primary);
+}
+
+/* Scroll Down Mouse Wheel Animation */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 10;
+  pointer-events: none;
+}
+.scroll-mouse {
+  width: 20px;
+  height: 32px;
+  border: 2px solid var(--text-muted);
+  border-radius: 12px;
+  position: relative;
+}
+.scroll-wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll-dot 1.5s infinite;
+}
+
+@keyframes scroll-dot {
+  0% { opacity: 0; top: 6px; }
+  30% { opacity: 1; }
+  100% { opacity: 0; top: 18px; }
+}
+
+/* Profile Image Card in Hero */
+.hero-profile-card {
+  width: 350px;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 4px solid var(--accent-primary);
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.25);
+  z-index: 1;
+  background: var(--surface-primary);
+  position: relative;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.hero-profile-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 50px rgba(16, 185, 129, 0.4);
+  border-color: var(--accent-success);
+}
+
+.hero-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+  filter: contrast(1.05) brightness(0.95);
+  transition: transform 0.5s ease;
+}
+
+.hero-profile-card:hover .hero-profile-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .hero-profile-card {
+    width: 300px;
+  }
+}
+
 
