@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initScrollAnimations();
   initContactForm();
+  initResumeTracking();
 });
 
 /* ==========================================
@@ -238,6 +239,73 @@ function initContactForm() {
       setTimeout(() => {
         feedback.style.display = 'none';
       }, 6000);
+    });
+  });
+}
+
+/* ==========================================
+   5. RESUME DOWNLOAD TRACKER (MODAL)
+   ========================================== */
+function initResumeTracking() {
+  const resumeBtn = document.getElementById('btn-hero-resume');
+  const modal = document.getElementById('resume-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
+  const submitBtn = document.getElementById('btn-submit-download');
+  const nameInput = document.getElementById('resume-visitor-name');
+  
+  if (!resumeBtn || !modal) return;
+
+  // Open modal
+  resumeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('active');
+    nameInput.focus();
+  });
+
+  // Close modal functions
+  const closeModal = () => {
+    modal.classList.remove('active');
+    nameInput.value = '';
+  };
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Submit and download
+  submitBtn.addEventListener('click', () => {
+    const visitorName = nameInput.value.trim() || 'Anonymous Visitor';
+    const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSetpYUXG6sMvpvvCfZLo8HSx-9w85KZ03ls86l0WCyn1YxKJw/formResponse';
+    
+    // Change button text while loading
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Preparing...';
+    submitBtn.disabled = true;
+
+    const formData = new URLSearchParams();
+    formData.append('entry.2107981272', visitorName);                 // Name
+    formData.append('entry.1587445071', 'Resume Download Modal');     // Company Name
+    formData.append('entry.1771514759', 'tejasteke2001@gmail.com');   // Email
+    formData.append('entry.1662415434', 'Resume Download Tracker');   // Role
+    formData.append('entry.1822200156', `${visitorName} has downloaded your resume! 🎉`); // Message
+
+    // Submit silently then open download
+    fetch(googleFormActionUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: formData.toString()
+    }).finally(() => {
+      // Restore button and close modal
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      closeModal();
+      
+      // Open the resume in a new tab
+      window.open('https://drive.google.com/file/d/1JNjsJ7Kr3EM6Y7_XKfrgN91KZqWoafqg/view?usp=drive_link', '_blank');
     });
   });
 }

@@ -67,7 +67,7 @@
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary" id="btn-hero-contact">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
           <a href="#projects" class="btn btn-secondary" id="btn-hero-work">View Projects</a>
-          <a href="https://drive.google.com/file/d/1JNjsJ7Kr3EM6Y7_XKfrgN91KZqWoafqg/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="btn-hero-resume"><i class="fa-solid fa-download"></i> Download Resume</a>
+          <button class="btn btn-secondary" id="btn-hero-resume" style="display: inline-flex; align-items: center; gap: 8px;"><i class="fa-solid fa-download"></i> Download Resume</button>
         </div>
         <div class="hero-socials">
           <span style="font-size: 0.9rem; color: var(--text-muted); margin-right: 10px;">CONNECT:</span>
@@ -667,6 +667,19 @@
       </div>
     </div>
   </footer>
+
+  <!-- Resume Download Modal -->
+  <div class="modal-overlay" id="resume-modal">
+    <div class="modal-content glass-card" style="padding-top: 40px; text-align: center;">
+      <button class="modal-close" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 10px; font-size: 1.5rem;">Download Resume</h3>
+      <p style="margin-bottom: 20px; color: var(--text-muted); font-size: 0.95rem;">Please enter your name to view and download my resume.</p>
+      <div style="margin-bottom: 20px;">
+        <input type="text" id="resume-visitor-name" class="contact-input" placeholder="Your Name" style="width: 100%; text-align: center;">
+      </div>
+      <button id="btn-submit-download" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Resume <i class="fa-solid fa-arrow-down"></i></button>
+    </div>
+  </div>
 
   <!-- Script Loader -->
   <script src="script.js"></script>
