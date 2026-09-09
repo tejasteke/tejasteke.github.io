@@ -252,6 +252,7 @@ function initResumeTracking() {
   const closeBtn = document.getElementById('modal-close-btn');
   const submitBtn = document.getElementById('btn-submit-download');
   const nameInput = document.getElementById('resume-visitor-name');
+  const emailInput = document.getElementById('resume-visitor-email');
   
   if (!resumeBtn || !modal) return;
 
@@ -266,6 +267,7 @@ function initResumeTracking() {
   const closeModal = () => {
     modal.classList.remove('active');
     nameInput.value = '';
+    if (emailInput) emailInput.value = '';
   };
 
   closeBtn.addEventListener('click', closeModal);
@@ -276,6 +278,7 @@ function initResumeTracking() {
   // Submit and download
   submitBtn.addEventListener('click', () => {
     const visitorName = nameInput.value.trim() || 'Anonymous Visitor';
+    const visitorEmail = emailInput && emailInput.value.trim() ? emailInput.value.trim() : 'Not provided';
     const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSetpYUXG6sMvpvvCfZLo8HSx-9w85KZ03ls86l0WCyn1YxKJw/formResponse';
     
     // Change button text while loading
@@ -286,9 +289,9 @@ function initResumeTracking() {
     const formData = new URLSearchParams();
     formData.append('entry.2107981272', visitorName);                 // Name
     formData.append('entry.1587445071', 'Resume Download Modal');     // Company Name
-    formData.append('entry.1771514759', 'tejasteke2001@gmail.com');   // Email
+    formData.append('entry.1771514759', visitorEmail);                // Email
     formData.append('entry.1662415434', 'Resume Download Tracker');   // Role
-    formData.append('entry.1822200156', `${visitorName} has downloaded your resume! 🎉`); // Message
+    formData.append('entry.1822200156', `${visitorName} (${visitorEmail}) has downloaded your resume! 🎉`); // Message
 
     // Submit silently then open download
     fetch(googleFormActionUrl, {
@@ -304,8 +307,13 @@ function initResumeTracking() {
       submitBtn.disabled = false;
       closeModal();
       
-      // Open the resume in a new tab
-      window.open('https://drive.google.com/file/d/1JNjsJ7Kr3EM6Y7_XKfrgN91KZqWoafqg/view?usp=drive_link', '_blank');
+      // Trigger local download
+      const link = document.createElement('a');
+      link.href = 'Tejas_Teke_DataAnalyst.pdf';
+      link.download = 'Tejas_Teke_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     });
   });
 }
