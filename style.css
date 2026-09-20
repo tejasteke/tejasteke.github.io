@@ -1743,13 +1743,14 @@ body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 65% center;
+  object-position: center;
+  transform: scale(1.05);
   filter: contrast(1.05) brightness(0.95);
   transition: transform 0.5s ease;
 }
 
 .hero-profile-card:hover .hero-profile-img {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 @media (max-width: 1024px) {
