@@ -421,8 +421,15 @@ function initLinkTracking() {
     }).catch(e => console.error(e));
   };
 
-  // 7. Track Link Clicks
+  // 7. Track Link Clicks & Interactions
   const clickedLinks = [];
+  
+  // Helper to log interaction time
+  const trackInteraction = (name) => {
+    const time = new Date().toLocaleTimeString();
+    clickedLinks.push(`${name} at ${time}`);
+  };
+
   const trackLinks = document.querySelectorAll('.project-link, .social-link');
   trackLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -443,10 +450,39 @@ function initLinkTracking() {
         }
       } catch (err) {}
       
-      const clickTime = new Date().toLocaleTimeString();
-      clickedLinks.push(`${projectName} at ${clickTime}`);
+      trackInteraction(projectName);
     });
   });
+
+  // Track Profile Photo Interactions
+  const profileImg = document.querySelector('.hero-profile-img');
+  if (profileImg) {
+    // Track right-click (usually for save image as)
+    profileImg.addEventListener('contextmenu', () => trackInteraction('Profile Photo Save/Right-Click'));
+    
+    // Track copy event
+    profileImg.addEventListener('copy', () => trackInteraction('Profile Photo Copy'));
+    
+    // Track zoom / interact (clicks or first hover)
+    profileImg.addEventListener('click', () => trackInteraction('Profile Photo Zoom/Click'));
+    let hoverTracked = false;
+    profileImg.addEventListener('mouseenter', () => {
+      if (!hoverTracked) {
+        trackInteraction('Profile Photo Hover/Zoom');
+        hoverTracked = true; // only track hover once per session to avoid spam
+      }
+    });
+  }
+
+  // Track Resume Download
+  const resumeBtn = document.getElementById('btn-hero-resume');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', () => trackInteraction('Opened Resume Modal'));
+  }
+  const submitResumeBtn = document.getElementById('btn-submit-download');
+  if (submitResumeBtn) {
+    submitResumeBtn.addEventListener('click', () => trackInteraction('Downloaded Resume'));
+  }
 
   // 6. Track Page Exit & Auto-Save
   const submitSession = (reason) => {
