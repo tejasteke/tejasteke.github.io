@@ -320,58 +320,123 @@ function initResumeTracking() {
 }
 
 /* ==========================================
-   6. LINK CLICK TRACKING
+   6. ADVANCED TRACKING (VISITOR, TIME, CLICKS)
    ========================================== */
 function initLinkTracking() {
-  const trackLinks = document.querySelectorAll('.project-link, .social-link');
+  const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeLSu4jAIPjfjDc4gnCaexYqwQYLG1d4UbX4TVDpQMDmXefPA/formResponse';
   
+  // 1. Visitor ID
+  let visitorId = localStorage.getItem('portfolio_visitor_id');
+  if (!visitorId) {
+    visitorId = 'user_' + Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('portfolio_visitor_id', visitorId);
+  }
+
+  // 2. Referrer
+  const referrer = document.referrer ? new URL(document.referrer).hostname : 'Direct';
+
+  // 3. Device & OS/Browser
+  const ua = navigator.userAgent;
+  let deviceType = 'Desktop';
+  if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) {
+    deviceType = 'Mobile';
+  } else if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+    deviceType = 'Tablet';
+  }
+  
+  let browserOs = 'Unknown Browser / OS';
+  if (ua.indexOf("Win") !== -1) browserOs = "Windows";
+  if (ua.indexOf("Mac") !== -1) browserOs = "MacOS";
+  if (ua.indexOf("Linux") !== -1) browserOs = "Linux";
+  if (ua.indexOf("Android") !== -1) browserOs = "Android";
+  if (ua.indexOf("like Mac") !== -1) browserOs = "iOS";
+  
+  if (ua.includes('Chrome')) browserOs += ' / Chrome';
+  else if (ua.includes('Safari')) browserOs += ' / Safari';
+  else if (ua.includes('Firefox')) browserOs += ' / Firefox';
+  else if (ua.includes('Edge')) browserOs += ' / Edge';
+
+  // 4. Location
+  let userLocation = 'Fetching...';
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      userLocation = `${data.city || 'Unknown'}, ${data.country_name || 'Unknown'}`;
+    })
+    .catch(() => {
+      userLocation = 'Unavailable';
+    });
+
+  // 5. Scroll Depth & Time
+  const startTime = Date.now();
+  let maxScroll = 0;
+  
+  window.addEventListener('scroll', () => {
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (docHeight > 0) {
+      const scrollPct = (window.scrollY / docHeight) * 100;
+      if (scrollPct > maxScroll) maxScroll = scrollPct;
+    }
+  });
+
+  // Helper to send data
+  const sendAnalytics = (eventType, linkDetails = '') => {
+    const timeSpentSecs = Math.round((Date.now() - startTime) / 1000);
+    const formData = new URLSearchParams();
+    
+    // New Form Fields Mapping
+    formData.append('entry.694495026', visitorId);
+    formData.append('entry.1122240091', referrer);
+    formData.append('entry.1061150014', userLocation);
+    formData.append('entry.663726650', deviceType);
+    formData.append('entry.1991648132', browserOs);
+    formData.append('entry.126292303', `${timeSpentSecs} seconds`);
+    formData.append('entry.1231190843', `${Math.round(maxScroll)}%`);
+    
+    let actionStr = eventType;
+    if (linkDetails) {
+      actionStr = `Clicked: ${linkDetails}`;
+    }
+    formData.append('entry.718984768', actionStr);
+
+    fetch(googleFormActionUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData.toString()
+    }).catch(e => console.error(e));
+  };
+
+  // 6. Track Page Exit
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+      sendAnalytics('Page Exit');
+    }
+  });
+
+  // 7. Track Link Clicks
+  const trackLinks = document.querySelectorAll('.project-link, .social-link');
   trackLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const clickedUrl = link.href;
-      
       let projectName = clickedUrl;
       try {
         const urlObj = new URL(clickedUrl);
         const host = urlObj.hostname.toLowerCase();
         
-        if (host.includes('linkedin.com')) {
-          projectName = 'linkedin';
-        } else if (host.includes('mail.google.com')) {
-          projectName = 'email';
-        } else {
+        if (host.includes('linkedin.com')) projectName = 'linkedin';
+        else if (host.includes('mail.google.com')) projectName = 'email';
+        else {
           const segments = urlObj.pathname.split('/').filter(p => p);
-          if (segments.length > 0) {
-            projectName = segments.pop();
-          }
+          if (segments.length > 0) projectName = segments.pop();
           
-          if (host.includes('github.com') && projectName === 'tejasteke') {
-            projectName = 'github';
-          } else if (host.includes('github.io')) {
-            projectName += ' Live Site';
-          }
+          if (host.includes('github.com') && projectName === 'tejasteke') projectName = 'github';
+          else if (host.includes('github.io')) projectName += ' Live Site';
         }
-      } catch (e) {
-        // fallback to full url
-      }
+      } catch (err) {}
       
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      
-      const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeLSu4jAIPjfjDc4gnCaexYqwQYLG1d4UbX4TVDpQMDmXefPA/formResponse';
-      const formData = new URLSearchParams();
-      formData.append('entry.1555051529', projectName);
-      formData.append('entry.718984768_hour', hours);
-      formData.append('entry.718984768_minute', minutes);
-      
-      fetch(googleFormActionUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formData.toString()
-      }).catch(err => console.error('Tracking Error:', err));
+      const clickTime = new Date().toLocaleTimeString();
+      sendAnalytics('Link Click', `${projectName} at ${clickTime}`);
     });
   });
 }
