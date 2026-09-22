@@ -501,7 +501,8 @@ function initLinkTracking() {
 
     let actionStr = reason;
     if (clickedLinks.length > 0) {
-      actionStr += ' | Clicks: ' + clickedLinks.join(', ');
+      const formattedClicks = clickedLinks.map((link, idx) => `${idx + 1}. ${link}`).join('\n');
+      actionStr += `\n\n--- Interactions ---\n${formattedClicks}`;
     }
     
     sendAnalytics(actionStr);
