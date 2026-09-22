@@ -421,16 +421,8 @@ function initLinkTracking() {
     }).catch(e => console.error(e));
   };
 
-  // 6. Track Page Exit
-  let hasSentExit = false;
-  window.addEventListener('pagehide', () => {
-    if (!hasSentExit) {
-      sendAnalytics('Page Exit');
-      hasSentExit = true;
-    }
-  });
-
   // 7. Track Link Clicks
+  const clickedLinks = [];
   const trackLinks = document.querySelectorAll('.project-link, .social-link');
   trackLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -452,7 +444,50 @@ function initLinkTracking() {
       } catch (err) {}
       
       const clickTime = new Date().toLocaleTimeString();
-      sendAnalytics('Link Click', `${projectName} at ${clickTime}`);
+      clickedLinks.push(`${projectName} at ${clickTime}`);
     });
+  });
+
+  // 6. Track Page Exit & Auto-Save
+  const submitSession = (reason) => {
+    let currentActive = totalActiveTime;
+    if (document.visibilityState === 'visible') {
+      currentActive += (Date.now() - lastVisibleTime);
+    }
+    
+    // Avoid spamming empty logs if left open in background for hours
+    if (currentActive < 5000 && clickedLinks.length === 0 && reason !== 'Page Exit') {
+      // Just reset the timers and wait for real activity
+      totalActiveTime = 0;
+      lastVisibleTime = Date.now();
+      return;
+    }
+
+    let actionStr = reason;
+    if (clickedLinks.length > 0) {
+      actionStr += ' | Clicks: ' + clickedLinks.join(', ');
+    }
+    
+    sendAnalytics(actionStr);
+    
+    // Reset session variables so the next hour/session starts fresh
+    clickedLinks.length = 0;
+    totalActiveTime = 0;
+    maxScroll = 0;
+    lastVisibleTime = Date.now();
+  };
+
+  // Run the auto-save every 1 hour (3600000 milliseconds)
+  const ONE_HOUR = 60 * 60 * 1000;
+  setInterval(() => {
+    submitSession('1 Hour Auto-Save');
+  }, ONE_HOUR);
+
+  let hasSentExit = false;
+  window.addEventListener('pagehide', () => {
+    if (!hasSentExit) {
+      submitSession('Page Exit');
+      hasSentExit = true;
+    }
   });
 }
