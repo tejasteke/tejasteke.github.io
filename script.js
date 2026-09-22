@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initContactForm();
   initResumeTracking();
+  initLinkTracking();
 });
 
 /* ==========================================
@@ -314,6 +315,63 @@ function initResumeTracking() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+    });
+  });
+}
+
+/* ==========================================
+   6. LINK CLICK TRACKING
+   ========================================== */
+function initLinkTracking() {
+  const trackLinks = document.querySelectorAll('.project-link, .social-link');
+  
+  trackLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const clickedUrl = link.href;
+      
+      let projectName = clickedUrl;
+      try {
+        const urlObj = new URL(clickedUrl);
+        const host = urlObj.hostname.toLowerCase();
+        
+        if (host.includes('linkedin.com')) {
+          projectName = 'linkedin';
+        } else if (host.includes('mail.google.com')) {
+          projectName = 'email';
+        } else {
+          const segments = urlObj.pathname.split('/').filter(p => p);
+          if (segments.length > 0) {
+            projectName = segments.pop();
+          }
+          
+          if (host.includes('github.com') && projectName === 'tejasteke') {
+            projectName = 'github';
+          } else if (host.includes('github.io')) {
+            projectName += ' Live Site';
+          }
+        }
+      } catch (e) {
+        // fallback to full url
+      }
+      
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      
+      const googleFormActionUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSeLSu4jAIPjfjDc4gnCaexYqwQYLG1d4UbX4TVDpQMDmXefPA/formResponse';
+      const formData = new URLSearchParams();
+      formData.append('entry.1555051529', projectName);
+      formData.append('entry.718984768_hour', hours);
+      formData.append('entry.718984768_minute', minutes);
+      
+      fetch(googleFormActionUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: formData.toString()
+      }).catch(err => console.error('Tracking Error:', err));
     });
   });
 }
