@@ -367,10 +367,19 @@ function initLinkTracking() {
       userLocation = 'Unavailable';
     });
 
-  // 5. Scroll Depth & Time
-  const startTime = Date.now();
-  let maxScroll = 0;
+  // 5. Scroll Depth & Active Time
+  let totalActiveTime = 0;
+  let lastVisibleTime = Date.now();
   
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      lastVisibleTime = Date.now();
+    } else {
+      totalActiveTime += (Date.now() - lastVisibleTime);
+    }
+  });
+
+  let maxScroll = 0;
   window.addEventListener('scroll', () => {
     const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (docHeight > 0) {
@@ -381,10 +390,13 @@ function initLinkTracking() {
 
   // Helper to send data
   const sendAnalytics = (eventType, linkDetails = '') => {
-    const timeSpentSecs = Math.round((Date.now() - startTime) / 1000);
-    const formData = new URLSearchParams();
+    let currentActive = totalActiveTime;
+    if (document.visibilityState === 'visible') {
+      currentActive += (Date.now() - lastVisibleTime);
+    }
+    const timeSpentSecs = Math.round(currentActive / 1000);
     
-    // New Form Fields Mapping
+    const formData = new URLSearchParams();
     formData.append('entry.694495026', visitorId);
     formData.append('entry.1122240091', referrer);
     formData.append('entry.1061150014', userLocation);
@@ -399,18 +411,22 @@ function initLinkTracking() {
     }
     formData.append('entry.718984768', actionStr);
 
+    // Use keepalive for pagehide/unload reliability
     fetch(googleFormActionUrl, {
       method: 'POST',
       mode: 'no-cors',
+      keepalive: true,
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formData.toString()
     }).catch(e => console.error(e));
   };
 
   // 6. Track Page Exit
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
+  let hasSentExit = false;
+  window.addEventListener('pagehide', () => {
+    if (!hasSentExit) {
       sendAnalytics('Page Exit');
+      hasSentExit = true;
     }
   });
 
