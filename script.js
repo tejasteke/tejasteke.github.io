@@ -426,8 +426,8 @@ function initLinkTracking() {
   
   // Helper to log interaction time
   const trackInteraction = (name) => {
-    const time = new Date().toLocaleTimeString();
-    clickedLinks.push(`${name} at ${time}`);
+    const dateTime = new Date().toLocaleString();
+    clickedLinks.push(`${name} on ${dateTime}`);
   };
 
   const trackLinks = document.querySelectorAll('.project-link, .social-link');
